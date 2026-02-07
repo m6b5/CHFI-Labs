@@ -1,0 +1,26 @@
+## 🎯 Objective
+- Develop knowledge of hard disk types and file systems used in digital devices  
+- Learn to perform file system analysis using Autopsy  
+- Determine key information from file systems, including:  
+  - File system type  
+  - Metadata information (timestamps, ownership, permissions)  
+  - File content information  
+
+## 🧰 Tools Used
+- **Autopsy** – digital forensics platform for analyzing disk and mobile images  
+
+## 📌 Procedure
+1. Open the target disk image in Autopsy  
+2. Examine the file system structure to identify the type (e.g., NTFS, FAT32, exFAT)  
+3. Navigate directories and inspect metadata of selected files  
+4. Identify recently deleted or modified files and their metadata  
+5. Document the hierarchy, file properties, and notable findings for further analysis  
+
+## 🔍 Findings
+- Deleted or modified files identified and logged for analysis  
+- Any suspicious activity, anomalies, or file extension mismatches observed  
+
+## 📚 Lessons Learned
+- Understanding file system types is essential for forensic investigations  
+- Metadata analysis helps determine timeline, ownership, and authenticity of files  
+- Recovering deleted data and detecting file extension mismatch labs are covered in Module 05 Defeating Anti-forensics Techniques.
