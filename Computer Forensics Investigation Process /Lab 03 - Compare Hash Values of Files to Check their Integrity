@@ -1,0 +1,20 @@
+## 🎯 Objective
+- Compare hashes of suspect files with pre-existing values to verify file integrity  
+- Generate MD5 hash values of selected files using MD5 Calculator  
+
+## 🧰 Tools Used
+- **MD5 Calculator** – computes MD5 hash values of files to check integrity  
+
+## 📌 Procedure
+1. Select a suspicious file for analysis  
+2. Use MD5 Calculator to compute the file's MD5 hash  
+3. Record the output hash value  
+4. Compare the computed hash with the previously known hash  
+
+## 🔍 Findings
+- If the hashes do not match, the file’s integrity is compromised and further investigation is required  
+- The file may have been modified to hide data, deliver a payload, or evade detection  
+
+## 📚 Lessons Learned
+- Hashing is a fundamental forensic technique for verifying file integrity and detecting tampering  
+- Recording hash values is essential for maintaining a verifiable chain of digital evidence  
