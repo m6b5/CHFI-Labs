@@ -1,0 +1,38 @@
+
+## 🎯 Objective
+- Learn how to recover permanently deleted files from a forensic disk image using WinHex  
+- Understand file header–based recovery techniques used in digital investigations  
+
+## 🧰 Tools Used
+- **WinHex** – advanced hex editor and forensic data recovery tool  
+
+## 📌 Procedure
+
+1. Open WinHex and load the forensic image:
+File → Open → Evidence.img
+
+
+2. Navigate to:
+Tools → Disk Tools → File Recovery by Type
+
+
+3. In the **File Header Search** window:
+- Select file types to be recovered (JPG, PDF, DOCX, etc.)
+
+4. When prompted:
+- Create a recovery folder on the Desktop named **Retrieved_Files**
+
+5. Start the recovery process:
+- WinHex scans the disk image and extracts recoverable files into the selected folder
+
+## 🔍 Findings
+- WinHex successfully recovered multiple file types based on file signature analysis  
+- Deleted files remained retrievable despite removal from the file system structure  
+- Header-based carving allows recovery even when metadata is missing  
+
+## 📚 Lessons Learned
+- Permanent deletion does not immediately erase data from storage media  
+- File signature analysis is an effective forensic recovery technique  
+- WinHex provides powerful low-level access for forensic investigations and data carving  
+- Proper evidence handling using disk images preserves original data integrity  
+
