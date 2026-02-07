@@ -1,0 +1,43 @@
+## 🎯 Objective
+- Perform forensic analysis on suspicious email messages  
+- Identify spoofing, phishing, and unsafe redirection techniques  
+
+## 🧰 Tools Used
+- **SysTools EML Viewer** – email forensic analysis tool  
+- **whatismyipaddress.com** – IP address investigation  
+- **centralops.net** – email header and domain analysis  
+
+## 📌 Procedure (Key Steps)
+
+1. Open suspicious `.eml` file using SysTools EML Viewer  
+
+2. Analyze email body in **HTML view**:
+   - Inspect embedded links and redirection behavior  
+   - Identify mismatched URLs, private IP usage, and lack of HTTPS  
+
+3. Open **Message Header** tab  
+
+4. Examine **Message-ID** field:
+   - Check domain after `@` symbol for legitimacy  
+
+5. Review **Received** headers:
+   - Trace email routing path  
+   - Identify spoofed or localhost origins  
+
+6. Analyze **Received-SPF** field:
+   - Verify sender authentication status  
+
+7. Use online tools:
+   - Validate IP addresses and domains for suspicious activity  
+
+## 🔍 Findings
+- Suspicious email used misleading hyperlinks with private IP redirection  
+- Message-ID contained `localhost` instead of legitimate domain  
+- Received headers confirmed spoofed origin  
+- Normal email showed proper fully qualified domain (e.g., mail.gmail.com)  
+
+## 📚 Lessons Learned
+- Email header analysis is essential for identifying spoofing and phishing  
+- Mismatched URLs and insecure links are strong scam indicators  
+- Message-ID and SPF records help validate email authenticity  
+- Combining header analysis with link inspection strengthens investigations 
