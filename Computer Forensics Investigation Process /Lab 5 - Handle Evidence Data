@@ -1,0 +1,23 @@
+## 🎯 Objective
+- Understand the importance of properly handling digital evidence and presenting data in a verifiable manner  
+- Gain practical experience in handling forensic data efficiently using tools like FTK Imager  
+
+## 🧰 Tools Used
+- **FTK Imager** – forensic imaging and evidence handling tool  
+
+## 📌 Procedure
+1. Select a disk or image file for analysis  
+2. Open the file in FTK Imager  
+3. Navigate to **File → Add Evidence Item** to load the data  
+4. Identify deleted files (marked with an X icon)  
+5. Select a file and click the **Properties** tab to inspect metadata  
+6. Use the **HEX & TEXT** view to examine file contents  
+
+## 🔍 Findings
+- Deleted files are easily identified and their properties can be inspected  
+- HEX and text views allow investigators to analyze raw data for hidden or tampered content  
+- FTK Imager provides a reliable method for handling, reviewing, and documenting evidence  
+
+## 📚 Lessons Learned
+- FTK Imager is a critical tool for forensic investigations, enabling safe handling of evidence  
+- Proper evidence documentation and analysis are essential for maintaining integrity in investigations  
