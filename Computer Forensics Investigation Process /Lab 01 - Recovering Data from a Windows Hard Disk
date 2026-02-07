@@ -1,0 +1,28 @@
+# Lab 01 – Deleted File Recovery (Windows)
+
+## 🎯 Objective
+- Understand tools used for recovering deleted files and data  
+- Learn basic hard disk storage concepts  
+- Perform practical data file recovery on a Windows system  
+
+## 🧰 Tools Used
+- EaseUS Data Recovery Wizard
+
+## 📖 Lab Overview
+This lab introduces the EaseUS Data Recovery Wizard tool and demonstrates how to recover deleted files from a Windows-based system.
+
+## 📌 Procedure
+1. Installed EaseUS Data Recovery Wizard  
+2. Selected the disk partition for scanning  
+3. Scanned for deleted and lost files  
+4. Identified and recovered targeted files  
+
+## 🔍 Findings
+- The tool successfully detected deleted files on the selected partition  
+- The free version allows recovery of up to 2 GB of data  
+- Recovery quality depends on how recently the files were deleted  
+
+## 📚 Lessons Learned
+- Deleted files often remain recoverable until overwritten  
+- Data recovery tools are essential in forensic investigations  
+- Digital evidence can persist even after user deletion actions  
