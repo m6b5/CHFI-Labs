@@ -1,1 +1,48 @@
+## 🎯 Objective
+- Analyze a system RAM dump to uncover Tor Browser activity  
+- Extract volatile forensic artifacts related to web usage and communications  
+- Understand how memory forensics supports Dark Web investigations  
 
+## 🧰 Tools Used
+- **Bulk Extractor** – memory and disk artifact extraction tool  
+
+## 📌 Procedure
+
+1. Create two folders on the Desktop:
+   - **Tor_Report_Browser_Open**
+   - **Tor_Report_Browser_Closed**
+
+2. Install and launch Bulk Extractor  
+
+3. Click **Generate a Report Using bulk_extractor**
+
+4. Select:
+   - RAM image file (e.g., `example.mem`)  
+   - Output directory: `Tor_Report_Browser_Open`
+
+5. Ensure all scanner options are enabled  
+
+6. Click **Submit Run** and wait for scan completion  
+
+7. After scan completes, open Bulk Extractor Viewer  
+
+8. Analyze extracted artifact files including:
+   - `domain.txt` — visited domains  
+   - `email.txt` — email addresses found in memory  
+   - `url.txt` — accessed URLs  
+   - `url_searches.txt` — search queries performed  
+
+9. Repeat the same process using output directory:
+   - `Tor_Report_Browser_Closed`
+ 
+
+## 🔍 Findings
+- Memory dumps contained recoverable Tor Browser browsing artifacts  
+- Domains, URLs, email addresses, and search queries were successfully extracted   
+- Volatile memory holds sensitive forensic evidence often missed in disk analysis  
+
+## 📚 Lessons Learned
+- RAM forensics is critical for investigating privacy-focused applications like Tor  
+- Volatile memory preserves real-time user activity and communication traces  
+- Bulk Extractor efficiently extracts actionable forensic artifacts  
+- Combining memory and disk analysis strengthens investigative conclusions  
