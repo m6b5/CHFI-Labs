@@ -1,1 +1,55 @@
+🎯 Objective
+Extract browser SQLite database files from forensic images
+Analyze Chrome user activity artifacts
+Recover browsing history, downloads, keywords, and saved data
 
+🧰 Tools Used
+FTK Imager
+SysTools SQLite Viewer
+
+📌 Procedure (Key Steps)
+📥 Load Evidence Image
+Launch FTK Imager
+Navigate to:
+File → Add Evidence Item → Image File
+Load forensic image:
+XX-Evidence.E01
+
+🌐 Extract Chrome History Database
+Expand directory in left pane:
+[root] → Users → Administrator → AppData → Local → Google → Chrome → User Data → Default
+Select History file
+Confirm file format = SQLite
+Right-click → Export Files
+
+📊 Analyze SQLite Databases
+Launch SysTools SQLite Viewer
+Click Add File → open exported History file
+Review key tables:
+downloads → downloaded files
+downloads_url_chains → download sources
+urls → visited websites
+visits → timestamps & visit counts
+
+🔐 Analyze Web Data Database
+Export Web Data file from FTK Imager
+Load into SQLite Viewer
+Review tables:
+keywords → search terms typed by user
+logins → saved account metadata
+Additional files analyzed:
+Favicons
+Login Data
+Preferences
+
+🔍 Findings
+Browser history successfully recovered from SQLite databases
+Download sources and timestamps identified
+Search keywords and saved account artifacts located
+Multiple Chrome activity artifacts reconstructed
+
+📚 Lessons Learned
+Chrome stores most forensic evidence in SQLite format
+SQLite databases reveal extensive user activity
+Deleted or hidden activity can be reconstructed
+Browser artifacts are critical in digital investigations
