@@ -1,1 +1,33 @@
+## 🎯 Objective
+- Learn how to recover deleted email messages and attachments from email data files  
+- Understand how forensic tools extract evidence from PST mail archives  
 
+## 🧰 Tools Used
+- **Recover My Email** – email recovery and forensic extraction tool  
+
+## 📌 Procedure (Key Steps)
+
+1. Launch Recover My Email  
+
+2. Load the target email archive file (`.pst`)  
+
+3. Allow the application to scan and extract deleted email records  
+
+4. Review recovered emails and attachments from the results panel  
+
+5. Select emails and attachments of interest  
+
+6. Export recovered data using:
+Save Message(s) as PST
+
+
+## 🔍 Findings
+- Deleted email messages were successfully recovered from the PST file  
+- Attachments associated with recovered emails were restored  
+- Forensic recovery revealed data not visible in normal email clients  
+
+## 📚 Lessons Learned
+- Email deletion does not immediately remove data from mail archives  
+- PST files retain recoverable artifacts useful in investigations  
+- Email recovery tools are essential for corporate and criminal forensics  
+- Proper evidence extraction helps reconstruct communication history  
