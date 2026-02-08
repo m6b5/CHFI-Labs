@@ -1,1 +1,29 @@
+🎯 Objective
+Examine FTP login attempts in a SIEM tool to identify potential brute-force attacks.
 
+🧰 Tools Used
+Splunk Enterprise
+
+📌 Procedure (Key Steps)
+Open the lab file: FTP_bruteforce.csv.
+
+Examine the log entries for successful logins:
+Response: 230 User logged in
+Scroll through the logs to detect failed login attempts:
+Response: 530 User cannot login
+
+Analyze repeated failed login entries from the same source IP (e.g., 10.10.1.8) to the destination IP (e.g., 10.10.1.11)
+to identify brute-force behavior.
+
+Use filters to isolate the latest successful login event and correlate it with previous failed attempts.
+
+Focus on fields such as Destination, extracted_Source, and Info to extract meaningful artifacts.
+
+🔍 Findings
+Multiple failed login attempts were observed from the same IP address.
+A successful login followed multiple failed attempts, indicating a brute-force attack.
+
+📚 Lessons Learned
+Repeated failed login events are strong indicators of brute-force attacks.
+SIEM tools help correlate multiple events to establish attack patterns.
+Focusing on the latest log entries ensures accurate detection of successful intrusions.
