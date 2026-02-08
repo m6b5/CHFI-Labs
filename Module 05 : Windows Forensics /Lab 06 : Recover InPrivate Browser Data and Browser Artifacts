@@ -1,1 +1,34 @@
+🎯 Objective
+Identify browsing artifacts left by private/incognito sessions
+Extract forensic evidence from the Windows pagefile
+Understand how RAM and virtual memory preserve user activity
 
+🧰 Tools Used
+FTK Imager
+
+📌 Procedure (Key Steps)
+📥 Load Evidence Image
+Install and launch FTK Imager
+Navigate to:
+File → Add Evidence Item → Image File
+Load forensic image:
+XX.Evidence.E01
+
+🧠 Analyze Pagefile for Private Browsing Artifacts
+Expand [root] directory in FTK Imager
+Select:
+pagefile.sys
+Use search function at the bottom right :
+CTRL + F
+Search for downloaded executable (e.g., SystemUpdate.exe)
+
+🔍 Findings
+Browser history showed visible activity of SystemUpdate.exe
+Artifacts related to private browsing were located inside pagefile.sys
+Evidence confirmed file download despite incognito mode usage
+
+📚 Lessons Learned
+Private browsing does not eliminate forensic traces
+Pagefile stores fragments of inactive memory processes
+Virtual memory is a valuable forensic evidence source
+FTK Imager can uncover hidden browsing activity
