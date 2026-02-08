@@ -1,1 +1,45 @@
+🎯 Objective
+Examine network traffic logs to identify artifacts related to malicious activities and attacker behavior.
 
+🧰 Tools Used
+Kiwi Log Viewer
+
+📌 Procedure (Key Steps)
+📁 Analyze njRAT Network Traffic
+
+Open Kiwi Log Viewer
+Navigate to:
+File → Open File
+Load the file:
+njRAT.csv
+
+Examine communication patterns:
+Observe traffic over port 5552 (default njRAT port)
+Identify source and destination IP addresses
+
+From the logs:
+10.10.1.11 → 10.10.1.22 over port 5552
+Indicates njRAT client running on 10.10.1.11 (attacker machine)
+
+📁 Analyze FTP Brute-Force Logs
+Open:
+FTP_bruteforce.csv
+
+Observe FTP response codes:
+Response Code	Meaning
+530	Login failed
+331	Username accepted – password required
+230	Login successful
+
+Apply visual highlighting:
+Options → Highlighting
+Color-code responses to quickly identify failed vs successful attempts.
+
+🔍 Findings
+Persistent communication on port 5552 confirms njRAT remote control activity.
+Multiple FTP failed logins followed by success indicate brute-force compromise.
+
+📚 Lessons Learned
+Default malware ports can quickly expose malicious tools like njRAT.
+Log visualization improves rapid threat detection.
+Correlating responses reveals attacker techniques.
