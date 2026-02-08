@@ -1,1 +1,32 @@
+🎯 Objective
+Analyze SSH logs to identify failed login attempts and potential brute-force attacks.
 
+🧰 Tools Used
+Ubuntu Terminal
+
+📌 Procedure (Key Steps)
+1️⃣ List All Failed SSH Logins
+grep "Failed password" auth.log
+Displays all failed login attempts recorded in the auth.log file
+
+2️⃣ Verify Failed SSH Attempts
+cat auth.log | grep "Failed password"
+Confirms the results from the previous command
+
+3️⃣ Search for All Failure Indicators
+egrep "Failed|Failure" auth.log
+Retrieves additional failed login events or authentication errors
+
+4️⃣ List IP Addresses of Failed Logins
+grep "Failed password" auth.log | awk '{print $11}' | uniq -c | sort -nr
+Counts and sorts the IP addresses of clients that failed SSH authentication
+Provides insight into potential brute-force attackers
+
+🔍 Findings
+Identified IP addresses attempting unauthorized SSH access
+Frequency of failed attempts indicates possible brute-force attempts
+
+📚 Lessons Learned
+Linux command-line tools (grep, awk, egrep) are essential for log analysis
+Counting and sorting IP addresses helps identify the most aggressive attackers
+SSH logs are a key source of network forensic evidence
