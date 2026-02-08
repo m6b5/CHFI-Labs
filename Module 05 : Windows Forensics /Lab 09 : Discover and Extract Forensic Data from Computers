@@ -1,1 +1,47 @@
+🎯 Objective
+Learn how to use OSForensics to investigate a suspect’s computer
+Locate and recover evidence from large datasets
+Analyze user activities, file systems, memory, and system components
 
+🧰 Tools Used
+OSForensics (osf.exe)
+
+📌 Procedure (Key Steps)
+🔍 Launch & Case Creation
+Launch OSForensics
+Click Create Case → assign case name and details
+
+🗂 File Searching
+Navigate to File Name Search → search for specific file types (e.g., .jpg, .png)
+Enable Use RAM drive for temporary files to speed up indexing
+Click Scan → view located files under File Details
+
+🧑‍💻 User Activity Investigation
+Click User Activity → select the drive (e.g., C:)
+Scan for activity: browser history, downloads, USB connections, recent files, installed programs
+Review User Activity – Summary for a complete overview
+
+🗑 Deleted File Recovery
+Click Deleted File Search → locate deleted files on the system
+Use Mismatch File Search to detect files with modified extensions (e.g., attacker hiding malicious files)
+
+🖥 Process & Memory Analysis
+Click Memory Viewer → select a running process
+View Memory Space → inspect the process memory
+Check Process Info → review additional process details
+
+🖧 System & File Integrity
+Click System Information → check core system components
+Explore Command List: Basic System Information for system metadata, registry info, and BitLocker keys
+Enable Live Acquisition – Current Machine → scan for live system data
+Click File Hashing → verify integrity of files via hash values
+
+🔍 Findings
+Evidence from files, user activity, and system components can be systematically recovered
+Hash verification ensures integrity of recovered files
+OSForensics provides a comprehensive method to examine user activity, system metadata, memory, and deleted files
+
+📚 Lessons Learned
+OSForensics accelerates evidence recovery from large datasets
+Indexing and user activity analysis help streamline forensic investigations
+File integrity checks and process inspections are critical in cybercrime cases
