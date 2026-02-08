@@ -1,1 +1,35 @@
+🎯 Objective
+Capture protected Windows Registry files from a live system
+Analyze registry artifacts using a hex editor
+Understand the forensic value of registry hives during investigations
 
+🧰 Tools Used
+FTK Imager
+Hex Workshop
+
+📌 Procedure (Key Steps)
+📥 Acquire Registry Files Using FTK Imager
+Install and launch FTK Imager
+Navigate to:
+File → Obtain Protected Files
+Select:
+All Registry Files
+(Optional) Password Recovery files
+Extract and save the parsed registry hives
+
+🔍 Analyze Registry Files Using Hex Workshop
+Install Hex Workshop
+Open extracted registry files:
+File → Open → Select Registry Hive
+View raw hex structure and registry contents
+
+🔍 Findings
+Protected registry hives were successfully extracted from the live system
+Registry artifacts became accessible for low-level forensic analysis
+Hex inspection allowed deeper understanding of registry structure
+
+📚 Lessons Learned
+Registry files contain critical system and user activity evidence
+Live acquisition prevents loss of volatile configuration data
+Hex analysis provides raw-level forensic validation
+FTK Imager is effective for protected file extractio
