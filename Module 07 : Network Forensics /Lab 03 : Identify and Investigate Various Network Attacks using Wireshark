@@ -1,1 +1,56 @@
+🎯 Objective
+Analyze network packet captures to identify artifacts of various network attacks:
+Examine incoming and outgoing packets
+Identify malicious activities such as plain-text credential leaks, DNS anomalies, FTP brute-force, SYN flooding, 
+and ARP poisoning
 
+🧰 Tools Used
+Wireshark
+
+📌 Procedure (Key Steps)
+1️⃣ Analyze HTTP Traffic
+Open HTTP Traffic.pcapng in Wireshark
+Apply filter to locate plain-text credentials:
+http.request.method == POST
+Examine POST requests for usernames and passwords
+
+2️⃣ Detect DNS Anomalies
+Open DNS Remote Shell.pcap
+Filter traffic on port 53:
+tcp.port == 53
+Use Follow TCP Stream to inspect DNS query and response sequences
+
+3️⃣ Analyze FTP Brute-Force
+Open FTP Brute-Force.pcapng
+Filter for failed logins:
+ftp.response.code == 530
+Filter for successful logins:
+ftp.response.code == 230
+
+4️⃣ Detect SYN Flooding
+Open Syn Flooding.pcapng
+Observe repeated [SYN] packets sent to the victim
+Attacker does not acknowledge [SYN, ACK] and sends [RST] packets to continue flooding
+Use I/O Graph for visualization:
+Statistics → I/O Graph → TCP Errors
+Confirm unusually high TCP packet volume via:
+Statistics → Protocol Hierarchy
+
+5️⃣ Detect ARP Poisoning
+Open ARP Poisoning.pcapng
+Check for duplicate IP addresses:
+arp.duplicate-address-detected
+Verify duplicate IP warning messages in the packet details pane
+
+🔍 Findings
+Plain-text credentials can be exposed in POST requests
+DNS port anomalies may indicate remote shells or exfiltration
+Multiple failed FTP logins followed by success indicate brute-force attempts
+High-volume SYN packets with RST responses confirm SYN flooding
+Duplicate ARP entries indicate ARP poisoning attempts
+
+📚 Lessons Learned
+Wireshark filters are essential for narrowing down attack artifacts
+Visual tools like I/O Graphs help identify volumetric attacks
+Correlating multiple network protocols provides a full view of an attack
+ARP, DNS, and TCP anomalies are strong indicators of network compromise
