@@ -1,1 +1,38 @@
+🎯 Objective
+Examine web server and attack logs to identify artifacts related to:
+SQL Injection
+Command Injection
+Directory Traversal
+Cross-Site Scripting (XSS)
+using Python scripts for automated parsing and analysis.
 
+🧰 Tools Used
+Python
+
+📌 Procedure (Key Steps)
+SQL Injection Detection
+Apply an encoded filter in the Python script:
+root%27%20%20union%20select
+Press Enter to parse the logs.
+
+Observe malicious queries such as:
+GET /commandexec/example1.php?ip=127.0.0.1|cat+/etc/passwd
+HTTP status code 200 indicates the request was successfully processed by the server.
+
+Directory Traversal Analysis
+Use Python script to parse logs for encoded directory traversal patterns.
+Review entries in the terminal for suspicious path access attempts.
+
+XSS Attack Detection
+Parse XSS logs in the terminal.
+Identify payload patterns in query strings.
+
+🔍 Findings
+Malicious queries detected in SQL Injection and Command Injection logs.
+Directory traversal attempts observed with encoded paths.
+XSS payloads identified in server logs.
+
+📚 Lessons Learned
+Python scripts automate parsing and highlight attack indicators efficiently.
+Encoded payloads can bypass manual inspection; automated scanning is critical.
+Combining logs from multiple sources provides a clearer picture of attack vectors.
