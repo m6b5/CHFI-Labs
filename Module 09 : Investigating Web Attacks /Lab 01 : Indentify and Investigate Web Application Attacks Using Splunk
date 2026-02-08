@@ -1,15 +1,82 @@
-## 🎯 Objective
-- examine and analyze log files from the Apache server, IIS server, and ModSecurity web application firewall using SIEM tool
-- understand how to examine log files and look for artifacts pertaining to web application attacks with the SIEM tool.
+🎯 Objective
+Analyze web server and security logs using a SIEM platform to identify artifacts related to:
+Cross-Site Scripting (XSS)
+SQL Injection
+Directory Traversal
+Command Injection
+XML External Entity (XXE) attacks
 
-## 🧰 Tools Used
-Splunk
+🧰 Tools Used
+Splunk (SIEM Platform)
 
-## 📌 Procedure (Key Steps)
-1
+📌 Procedure (Key Steps)
+🔍 Detect XSS Attacks
+Search for encoded script payloads:
+%3c%2fscript%3e%3cbr
 
-## 🔍 Findings
-- 
+💉 Detect SQL Injection
+Plain-text and encoded payloads:
+' or 1=1--
+%27%20or%201%3D1%2D%2D
+root%27%20union%20select
 
-## 📚 Lessons Learned
+📁 Detect Directory Traversal
+Indicators:
+../../../
+%2E%2E%2F
+..%2F
 
+⚙ Detect Command Injection
+Search:
+|ifconfig
+|cat
+
+
+or:
+|ifconfig sourcetype="Command Injection.log (Apache Logs)"
+|cat sourcetype="Command Injection.log (Apache Logs)"
+
+Evidence observed:
+Pipe (|) operator combined with Linux shell commands
+
+Access to sensitive file:
+/etc/passwd
+➡ Strong indicator of command injection exploitation
+
+📄 Detect XXE Attacks
+Encoded payloads:
+xml=%3C!DOCTYPE
+%3c!Entity
+
+🔍 Findings
+🔐 Common Encoded Values
+Encoded	Decoded
+%3C	<
+%3E	>
+%2F	/
+%27	'
+%3D	=
+%2D	-
+
+🚨 Attack Indicators Identified
+Attacker IP addresses
+Timeline and frequency of attacks
+Targeted web resources
+Malicious payload patterns
+
+HTTP Status Codes Observed:
+403 → blocked attempts
+302 → redirections
+200 → successful exploitation
+
+🧠 Key Observations
+UNION SELECT targeting information_schema.tables → SQL Injection
+Repeated POST requests to /wp-login.php → brute-force attempts
+Access shift /wp-login.php → /wp-admin/ → privilege compromise
+Multiple encoded traversal strings → directory traversal exploitation
+
+📚 Lessons Learned
+SIEM platforms enable fast correlation of multi-log attacks
+Attackers heavily use URL encoding to evade detection
+Timeline + payload analysis improves incident response
+Web logs are critical forensic artifacts during breach investigations
