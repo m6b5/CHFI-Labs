@@ -1,1 +1,38 @@
+🎯 Objective
+Extract forensic artifacts from a Windows memory dump
+Identify hidden objects, rootkits, and suspicious processes
+Analyze memory contents through a mounted virtual file system
 
+🧰 Tools Used
+MemProcFS
+
+📌 Procedure (Key Steps)
+🔧 Install Required Driver
+From the MemProcFS directory:
+Dokan_x64.msi
+(Installs virtual file system support)
+
+🧠 Mount Memory Dump for Forensic Analysis
+MemProcFS.exe -device "path\XX.mem" -forensic 1
+
+📁 Access Parsed Artifacts
+The tool mounts a virtual drive (e.g., **M:**)
+Memory artifacts appear as structured folders
+Extracted data includes:
+Processes
+Network artifacts
+Registry data
+Files
+Hidden objects
+All stored as readable text files.
+
+🔍 Findings
+Memory artifacts were successfully parsed and mounted
+Physical memory contents became accessible for investigation
+Hidden forensic evidence was retrievable without manual carving
+
+📚 Lessons Learned
+Memory dumps contain structured forensic evidence
+Virtual file systems simplify RAM investigation
+MemProcFS provides rapid artifact extraction
+Useful for detecting stealthy malware and rootkits
