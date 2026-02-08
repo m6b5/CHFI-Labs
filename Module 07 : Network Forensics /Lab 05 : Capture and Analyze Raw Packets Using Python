@@ -1,1 +1,38 @@
+🎯 Objective
+Gain practical knowledge of capturing and analyzing raw network packets programmatically using Python.
 
+🧰 Tools Used
+
+Ubuntu Terminal
+Python
+Pyshark library
+Tshark
+
+📌 Procedure (Key Steps)
+1️⃣ Prepare Python Script
+Write the packet_capture.py script using Pyshark to capture network packets in real time.
+Save and close the text editor.
+
+2️⃣ Install Pyshark
+pip install pyshark
+
+
+3️⃣ Install Tshark
+apt install tshark
+If prompted “Do you want to continue?”, type y and press Enter.
+If installation fails, run:
+apt-get update
+then retry the installation.
+During the wireshark-common configuration prompt, select No and press Enter.
+
+4️⃣ Run the Packet Capture Script
+python3 packet_capture.py
+The script will now capture live network packets and display them programmatically.
+
+🔍 Findings
+Captured network packets can be analyzed in real time for protocols, IP addresses, ports, and packet contents.
+
+📚 Lessons Learned
+Pyshark allows programmatic access to packet capture data.
+Tshark provides the underlying packet capture functionality.
+Python scripts can automate network monitoring and forensic packet analysis.
