@@ -1,1 +1,75 @@
+🎯 Objective
+Examine browser artifacts including:
+Browsing history
+Cookies
+Cached content
+Retrieve user activity evidence useful in forensic investigations
 
+🧰 Tools Used
+
+Google Chrome:
+ChromeCacheView
+ChromeHistoryView
+ChromeCookiesView
+
+Mozilla Firefox:
+MZCacheView
+MZHistoryView
+MZCookiesView
+
+📌 Procedure (Key Steps)
+🌐 Google Chrome Artifact Analysis
+
+📁 Cache Analysis
+Run ChromeCacheView.exe to view:
+Cached file names
+URLs
+Content types
+Server IPs and responses
+Access timestamps
+
+🍪 Cookie Analysis
+Run ChromeCookiesView.exe to retrieve:
+Domain/host names
+Cookie values
+Secure and HTTP-only flags
+Last accessed times
+
+📜 Browsing History
+Run ChromeHistoryView.exe to view:
+Visited URLs
+Page titles
+Visit count
+Timestamp data
+
+🦊 Mozilla Firefox Artifact Analysis
+📁 Cache Files
+Run MZCacheView.exe to analyze:
+Cached URLs
+File sizes
+Server details
+Expiration data
+
+🍪 Cookies
+Run MZCookiesView.exe to retrieve:
+Cookie domains
+Values
+Creation and expiration timestamps
+
+📜 History
+Run MozillaHistoryView.exe to display:
+First and last visit dates
+Referrer URLs
+Visit frequency
+
+🔍 Findings
+Browser artifacts revealed user browsing behavior
+Cached files provided accessed content evidence
+Cookies exposed session and authentication data
+Timestamps allowed activity timeline reconstruction
+
+📚 Lessons Learned
+Browser data is a rich forensic evidence source
+History + cookies + cache together reconstruct user actions
+Artifacts persist even after browser closure
+Specialized tools simplify artifact extraction
