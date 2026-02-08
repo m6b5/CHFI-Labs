@@ -1,1 +1,15 @@
+## 🎯 Objective
+- examine and analyze log files from the Apache server, IIS server, and ModSecurity web application firewall using SIEM tool
+- understand how to examine log files and look for artifacts pertaining to web application attacks with the SIEM tool.
+
+## 🧰 Tools Used
+Splunk
+
+## 📌 Procedure (Key Steps)
+1
+
+## 🔍 Findings
+- 
+
+## 📚 Lessons Learned
 
