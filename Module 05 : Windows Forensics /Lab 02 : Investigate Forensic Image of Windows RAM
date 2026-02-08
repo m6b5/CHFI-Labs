@@ -1,1 +1,72 @@
+🎯 Objective
+Detect suspicious and malicious processes running on a live system
+Analyze a RAM dump to retrieve forensic artifacts related to cyber incidents
+Correlate process, network, file, and registry evidence
 
+🧰 Tools Used
+(FireEye)
+Volatility Framework
+Linux strings utility
+
+📌 Procedure (Key Steps)
+
+🔴 Memory Analysis Using Redline
+Open Redline → Analyze Data → Load memory image (XX.mem)
+Review:
+Processes – active programs in RAM
+Ports – network connections and linked processes
+Hierarchical Processes – parent-child relationships
+Timeline – event sequence
+
+⚡ Memory Analysis Using Volatility
+🧠 Identify System Profile
+volatility -f XX.mem imageinfo
+volatility -f XX.mem kdbgscan
+Select the closest matching profile (e.g., Win2008R2SP0x64).
+
+🌐 Analyze Network Connections
+volatility -f XX.mem --profile=Win2008R2SP0x64 netscan
+Reveals suspicious processes initiating multiple connections.
+
+📋 List Running Processes
+volatility -f XX.mem --profile=Win2008R2SP0x64 pslist
+
+📁 Inspect Files Used by a Process
+volatility -f XX.mem --profile=Win2008R2SP0x64 handles -p 1896 -t file
+
+🗝 Inspect Registry Keys
+volatility -f XX.mem --profile=Win2008R2SP0x64 handles -p 1896 -t key
+
+🌳 View Process Tree
+volatility -f XX.mem --profile=Win2008R2SP0x64 pstree
+
+🔎 Additional Plugins Used
+malfind
+arp
+ifconfig
+lsof
+
+🐧 Artifact Extraction Using Strings (Linux)
+📂 Extract File Paths
+strings XX.mem | grep -i "^[a-z]:\\\\" | sort | uniq
+
+🌐 Extract URLs
+strings XX.mem | egrep "^https?://" | sort | uniq
+
+📡 Extract IP Addresses
+strings XX.mem | egrep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}'
+
+🎯 Filter Specific IP
+strings XX.mem | egrep "172.20.20.9"
+
+🔍 Findings
+Suspicious processes repeatedly initiated network connections
+Hidden artifacts recovered from memory dump
+Associated files and registry keys identified
+Network indicators extracted for threat correlation
+
+📚 Lessons Learned
+RAM contains critical evidence not stored on disk
+Memory forensics is essential for malware detection
+Process relationships reveal attack execution flow
+Combining GUI and CLI tools improves investigation accuracy
