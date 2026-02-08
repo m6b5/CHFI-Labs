@@ -1,1 +1,73 @@
+🎯 Objective
+- Collect volatile information from a live Windows machine
+- Identify active users, processes, shared resources, and network connections
+- Understand the importance of live response before system shutdown
 
+🧰 Tools Used
+Windows Command Prompt
+Sysinternals PsTools
+logonsessions64.exe
+NetworkOpenedFiles
+Python (psutil library)
+
+📌 Procedure (Key Steps)
+
+⏰ Capture System Time
+date /t & time /t
+
+👤 Identify Logged-On Users
+Run:
+PsLoggedon64.exe
+Displays:
+Local users
+Users connected via network resources
+
+🌐 View Active Network Sessions
+net sessions
+Shows IP addresses of connected systems.
+
+🔑 Analyze Logon Sessions
+logonsessions64.exe
+logonsessions64.exe -p
+Displays:
+Active sessions
+Processes linked to each user session
+
+📂 Identify Open Shared Files
+net file
+Reveals:
+Open shared resources
+User accessing them
+File locks
+
+📊 View Network Accessed Files
+Run NetworkOpenedFiles GUI to inspect:
+Shared folders
+File properties
+
+🌍 Monitor Network Connections
+netstat -ano
+Displays:
+Active connections
+Ports
+Associated process IDs
+
+📈 Capture Network Usage (Python)
+Steps:
+Install Python
+Install library:
+pip install psutil
+Run script to collect:
+Bandwidth usage
+Connection duration
+
+🔍 Findings
+Active user sessions were identified both locally and remotely
+Open shared files revealed live data access
+Network connections exposed running services and potential attacker activity
+Python script provided real-time network usage metrics
+
+📚 Lessons Learned
+Volatile data must be collected first during incident response
+Live systems contain critical evidence that disappears after shutdown
+Combining native commands with forensic tools improves visibility
