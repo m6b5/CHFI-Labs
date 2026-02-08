@@ -1,1 +1,43 @@
+🎯 Objective
+Reconstruct cached web pages from forensic images
+Analyze Chrome browser cache during investigations
+Recover web activity and visual evidence
 
+🧰 Tools Used
+AccessData FTK Imager
+Browser History Examiner Tool
+WebView2 Runtime
+
+📌 Procedure (Key Steps)
+📥 Load Evidence Image
+Launch FTK Imager
+Navigate to:
+File → Add Evidence Item → Image File
+Load forensic image.
+
+🌐 Extract Browser Cache
+Expand directory:
+[root] → Users → Administrator → AppData → Local → Google → Chrome → User Data → Default → Cache
+Select Cache_Data folder → Right-click → Export Files…
+
+🖥 Reconstruct Cached Pages
+Install WebView2 Runtime
+Launch Browser History Examiner
+Click Load History → select Load history manually → Next
+Browse to exported Cache_Data folder
+Tool extracts cache data and shows progress
+
+📊 View Recovered Artifacts
+Click Cached Files → view metadata: Content Type, URL, File Size, Browser
+Click Cached Images → preview recovered images from websites
+Click Cached Web Pages → reconstruct websites as viewed by the user
+
+🔍 Findings
+Cached web pages were successfully reconstructed
+Browser activity visually confirmed
+Artifacts provide critical timeline and web access evidence
+
+📚 Lessons Learned
+Browser cache contains a wealth of forensic artifacts
+Cached web pages help reconstruct user activity even in private browsing sessions
+Tools like Browser History Examiner simplify extraction and visualization of cache data
