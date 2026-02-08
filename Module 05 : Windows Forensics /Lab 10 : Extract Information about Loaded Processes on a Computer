@@ -1,1 +1,32 @@
+🎯 Objective
+Learn how to investigate loaded processes on a Windows system
+Identify legitimate vs. suspicious processes and associated DLLs
 
+🧰 Tools Used
+Process Explorer (procexp.exe)
+
+📌 Procedure (Key Steps)
+🔍 Launch & GUI Overview
+Install procexp.exe
+Launch the Process Explorer GUI → displays all running processes
+
+🧩 DLL Inspection
+From the menu: View → Lower Pane View → DLLs
+Select a DLL → DLL → Properties
+Click Verify → if the company is “Microsoft Windows,” the process is likely legitimate
+Explore the Strings tab → lists Unicode strings in the selected process → helps detect malware-related activity
+
+🌐 Online & Handle Inspection
+Search DLLs online: Right-click → DLL → Search Online…
+To view process handles: View → Lower Pane View → Handles
+Inspect handle properties: Right-click the handle → Properties
+
+🔍 Findings
+Loaded processes can be verified for legitimacy using company signatures
+Unicode strings and DLL properties reveal potential malicious activity
+Handles provide insight into system resources accessed by processes
+
+📚 Lessons Learned
+Process Explorer is essential for identifying and analyzing active processes
+Verifying DLLs and checking strings can uncover hidden malware
+Handle analysis helps track resource usage and potential anomalies
