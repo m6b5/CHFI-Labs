@@ -1,1 +1,26 @@
+🎯 Objective
+Learn how to view, monitor, and analyze Windows event logs
+Detect suspicious activity such as failed login attempts
 
+🧰 Tools Used
+Event Log Explorer (elex_setup.exe)
+
+📌 Procedure (Key Steps)
+Install Event Log Explorer
+Click Open Event Log File → select XX.evtx
+The application loads the log entries in the right pane
+
+🔍 Analyzing Events
+Select an event → Description pane displays details
+Scroll through logs → identify Audit Failure events
+Double-click an Audit Failure → opens Event Properties → reveals failed login attempt
+Compare timestamps of Audit Failure and Audit Success events → helps detect possible brute-force attacks
+
+🔍 Findings
+Multiple Audit Failure events indicate failed login attempts
+Corresponding Audit Success events after failures can signal successful brute-force attempts
+
+📚 Lessons Learned
+Event Log Explorer is useful for monitoring and investigating system activity
+Security events (failures and successes) can reveal attack patterns
+Understanding timestamps and event sequences is crucial in forensic analysis
