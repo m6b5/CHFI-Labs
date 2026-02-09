@@ -1,1 +1,52 @@
+🎯 Objective
+Understand how to safely mount forensic disk images on a Linux forensic workstation in order to:
+Access evidence without modifying original data
+Support multiple file systems and image formats
+Perform live forensic analysis on acquired images
 
+This lab covers:
+Mounting RAW/DD images using the mount command
+Mounting disk images using loop devices (losetup)
+
+🧰 Tools Used
+Ubuntu Linux forensic workstation
+Built-in Linux utilities (mount, losetup)
+
+📌 Procedure (Key Steps)
+📂 Step 1 — Mount DD Image Using mount (Read-Only)
+Created a mount directory:
+sudo mkdir /mnt/dd
+Mounted the forensic image in read-only mode:
+sudo mount -o ro /home/jason/Documents/Windows_Evidence_001.dd /mnt/dd
+
+🔍 Step 2 — View Mounted Evidence
+Listed contents of the image:
+ls -la /mnt/dd/
+➡ Allowed safe examination of files within the forensic image.
+
+🔁 Step 3 — Identify Available Loop Device
+Checked for unused loop devices:
+sudo losetup -f
+Example output:
+/dev/loop14
+
+🍎 Step 4 — Mount Mac File System Image Using Loop Device
+Attached Mac forensic image to loop device:
+sudo losetup /dev/loop14 MAC_Evidence_001.dd
+The mounted image appeared automatically on the system.
+Opened the mounted volume to view contents.
+💡 To show hidden files:
+Ctrl + H
+
+🔍 Findings
+✔ Successfully mounted Windows and macOS forensic images
+✔ Preserved evidence using read-only access
+✔ Accessed hidden forensic artifacts
+✔ Demonstrated multi-filesystem support on Linux
+
+📚 Lessons Learned
+Forensic images must always be mounted in read-only mode
+Linux provides native tools for evidence handling
+Loop devices allow mounting complex disk structures
+Hidden files often contain valuable forensic evidence
+Mounted images are the foundation for forensic analysi
