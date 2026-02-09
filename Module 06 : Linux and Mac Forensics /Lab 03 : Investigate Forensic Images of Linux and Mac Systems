@@ -1,1 +1,105 @@
+🎯 Objective
 
+A forensic image file is a bit-by-bit copy of a storage device containing:
+Active files & folders
+Deleted data
+Slack space
+Unallocated space
+
+The objective of this lab is to:
+Analyze forensic images from Linux and macOS systems and retrieve potential forensic artifacts
+such as logs, deleted files, metadata, system configurations, and user activity.
+
+🧰 Tools Used
+
+Autopsy (Digital Forensics Platform)
+Spotlight Parser (macOS metadata extraction tool)
+Ubuntu Forensics VM
+
+🐧 Part 1 – Linux Forensic Image Analysis (linux.img)
+📌 Key Analysis Steps
+Loaded Linux_Evidence_001.img into Autopsy
+
+Used default ingest modules to extract artifacts
+
+Explored key directories:
+
+🔍 Important Locations Reviewed
+Directory	Forensic Value
+/bin	Command binaries & potential log remnants
+/boot	Bootloader files (malware persistence check)
+/dev	Connected device information
+/etc	System configuration files
+/home	User activity & downloads
+/var/log/apt	Software installation history
+/cups	Printing activity
+/tmp	Temporary attacker artifacts
+
+📂 Notable Artifacts Identified
+Recovered deleted files (red cross in Autopsy)
+Syslog information embedded inside binaries
+User login session traces
+Package installation history (history.log)
+
+Suspicious encrypted document:
+Secret-encrypted.doc
+
+Extension mismatches and metadata anomalies
+
+🍎 Part 2 – macOS Forensic Image Analysis (MAC.dd)
+📌 File System Event Logs (FSEvents)
+
+Location:
+.fseventsd/
+
+Contains:
+File creation
+Deletions
+Renames
+Modifications
+
+📍 Used to reconstruct user/system activity timeline.
+
+🔦 Spotlight Metadata Analysis
+Spotlight stores system-wide metadata in:
+.Spotlight-V100/Store-V2/.../.store.db
+
+This database includes:
+MAC timestamps
+File access frequency
+Logical file size
+Last opened time
+File paths
+
+🧠 Parsing Spotlight Database
+⚙️ Tool Setup
+pip3 install lz4 pyliblzfse
+
+▶️ Execution
+python3 spotlight_parser.py /home/store.db /home
+
+📄 Outputs Generated
+spotlight-store_data.txt → readable metadata
+spotlight-store_fullpaths.tsv → file paths + inode numbers (opened in LibreOffice Calc)
+
+🔍 Findings
+Linux System
+✔ Deleted files recovered
+✔ Evidence of software installation activity
+✔ Encrypted document detected
+✔ Log remnants inside binaries
+✔ User behavior traces in home directories
+
+macOS System
+✔ File activity timeline from FSEvents
+✔ Metadata showing file usage history
+✔ Spotlight database revealing full file paths
+✔ Access patterns of user files & applications
+
+📚 Lessons Learned
+Forensic images contain far more than visible files
+Deleted data can often be recovered
+Logs are critical for reconstructing attacker actions
+Metadata databases (Spotlight) reveal powerful timelines
+Boot & configuration files help detect persistence techniques
+Combining GUI tools (Autopsy) with CLI tools improves depth of analysis
