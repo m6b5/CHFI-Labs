@@ -1,1 +1,117 @@
+🎯 Objective
+During active incidents, volatile system data provides crucial evidence that may disappear after shutdown or reboot.
 
+This lab focuses on collecting and analyzing live Linux system artifacts to:
+
+✔ Identify suspicious activity
+✔ Trace attacker presence and movement
+✔ Determine impacted processes and network connections
+✔ Correlate user actions and persistence mechanisms
+
+🧰 Tools Used
+Ubuntu Linux (Live System)
+Built-in forensic utilities:
+
+w, last, netstat, lsof, lsmod
+
+auditd, aureport, ausearch
+
+ps, ss, arp, nmap
+
+.bash_history, /proc filesystem
+
+xclip, Python scripts
+
+📌 Procedure (Key Steps)
+🕒 Step 1 — System Activity & Login History
+w
+last -a
+
+Collected:
+Current system uptime
+Active user sessions
+Historical login activity (potential unauthorized access)
+
+🌐 Step 2 — Network Connections & Open Ports
+netstat
+lsof > openfiles.txt
+ss -l -p -n | grep PID
+nmap -sT localhost
+nmap -sU localhost
+
+
+Analyzed:
+Active connections
+Listening services
+Process-to-port mapping
+Suspicious network exposure
+
+📁 Step 3 — Open Files & Loaded Kernel Modules
+lsmod
+gedit openfiles.txt
+
+Reviewed:
+Loaded drivers/modules (potential rootkits)
+Open files linked to processes and sockets
+
+📊 Step 4 — Audit Logs & User Activity Correlation
+apt install -y auditd
+aureport
+id <user>
+ausearch -ui <userID> --interpret
+
+Captured:
+Login attempts
+Command execution
+Privilege usage
+User-based activity timeline
+
+⏱ Step 5 — Persistence & Scheduled Tasks
+ls /var/spool/cron/
+ls /etc/cron.daily/
+
+Reviewed:
+Scheduled malicious jobs
+Persistence mechanisms
+
+📜 Step 6 — Command History & System Artifacts
+gedit .bash_history
+arp
+ps auxww
+hostname
+
+Analyzed:
+Executed commands
+Process listings
+ARP cache (lateral movement)
+Host identification
+
+📂 Step 7 — Memory & Clipboard Evidence
+apt install xclip
+xclip
+
+Captured:
+Clipboard content (often abused during attacks)
+
+🧪 Step 8 — Automated History Analysis
+python3 history.py
+
+Parsed:
+User command sequences
+Suspicious execution patterns
+
+🔍 Findings
+✔ Active user sessions and historical logins collected
+✔ Open ports and network connections identified
+✔ Running processes correlated with ports and files
+✔ Audit logs revealed user activity timelines
+✔ Scheduled tasks checked for persistence
+✔ Command history reconstructed
+✔ Kernel modules verified for tampering
+
+📚 Lessons Learned
+Volatile data is critical for real-time incident response
+Network artifacts reveal attacker communication paths
+Audit logs provide precise activity timelines
+Cron jobs are common persistence techniques
+Process correlation exposes malicious execution chains
