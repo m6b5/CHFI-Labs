@@ -1,1 +1,44 @@
+🎯 Objective
+Understand how file carving behaves on Solid State Drives (SSD) by:
+Recovering deleted files from unallocated disk space
+Observing the impact of the TRIM command on forensic recovery
+Comparing evidence acquisition when TRIM is enabled vs disabled
+Demonstrating real-world anti-forensics techniques
 
+🧰 Tools Used
+Autopsy Digital Forensics Platform
+
+📌 Procedure (Key Steps)
+🔍 Step 1 — File Carving on TRIM-Enabled SSD Image
+Loaded forensic image:
+XX_TE.dd
+Configured ingest modules (default settings).
+Autopsy attempted file carving.
+📉 Result:
+No files were recovered.
+➡ Demonstrates that TRIM permanently clears unallocated space, preventing recovery.
+
+🗂 Step 2 — File Carving on TRIM-Disabled SSD Image
+Loaded forensic image:
+XX_TD.dd
+Allowed Autopsy to process and carve deleted content.
+Navigated to:
+CarvedFiles directory
+Deleted Files → All
+Reviewed:
+File contents
+Hex data
+Metadata
+Text representations
+
+🔍 Findings
+✔ TRIM-enabled SSD prevents file carving
+✔ TRIM-disabled SSD allows recovery of deleted data
+✔ Demonstrates effective anti-forensics technique
+✔ Confirms SSD behavior differs from HDD forensics
+
+📚 Lessons Learned
+File carving relies on unallocated disk space
+TRIM wipes data blocks permanently
+SSDs significantly reduce post-deletion recovery
+Anti-forensics must be considered in investigations
