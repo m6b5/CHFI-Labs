@@ -1,1 +1,86 @@
+🎯 Objective
 
+Volatile memory captures critical runtime artifacts that are not present on disk, including:
+Active malware processes
+Injected code regions
+Open network connections
+Mounted file systems
+User command history
+
+This lab focuses on:
+✔ Creating Linux kernel symbol profiles for Volatility
+✔ Parsing a RAM dump for forensic artifacts
+✔ Identifying malicious activity in memory
+
+🧰 Tools Used
+
+Volatility 3 Framework
+Python 3
+Linux RAM dump (Linux.mem)
+Prebuilt Linux kernel symbol files
+
+📌 Procedure (Key Steps)
+🔐 Step 1 — Volatility Setup
+sudo su
+cd volatility3
+ls
+pip3 install -r requirements.txt
+python3 setup.py build
+python3 setup.py install
+python3 vol.py -h
+Ensures Volatility is properly installed and ready for analysis.
+
+🧬 Step 2 — Process Enumeration
+List running processes at time of capture:
+python3 vol.py -f /home/jason/Linux.mem linux.pslist
+📌 Identifies legitimate vs suspicious processes.
+
+🧪 Step 3 — Injected Code Detection
+Scan for malicious memory regions:
+python3 vol.py -f /home/jason/Linux.mem linux.malfind
+✔ Detects shellcode and process injection techniques.
+
+📂 Step 4 — Open File Artifacts
+python3 vol.py -f /home/jason/Linux.mem linux.lsof
+Shows files accessed by running processes (malware droppers, temp files, logs).
+
+📜 Step 5 — User Command History
+python3 vol.py -f /home/jason/Linux.mem linux.bash
+Reconstructs attacker or user activity.
+
+🗂 Step 6 — Mounted Filesystems
+python3 vol.py -f /home/jason/Linux.mem linux.mount
+Reveals:
+External drives
+Hidden mounts
+Evidence locations
+
+⚙️ Step 7 — Kernel Module Analysis
+python3 vol.py -f /home/jason/Linux.mem linux.lsmod
+Detects:
+Rootkits
+Malicious kernel modules
+Persistence mechanisms
+
+🔍 Step 8 — Hidden Process Discovery
+python3 vol.py -f /home/jason/Linux.mem linux.psscan
+Finds:
+Terminated processes
+Rootkit-hidden processes
+
+🔍 Findings
+✔ Full list of running processes reconstructed
+✔ Potential injected memory regions identified
+✔ Open files linked to suspicious activity recovered
+✔ User command history extracted
+✔ Mounted storage devices revealed
+✔ Loaded kernel modules analyzed
+✔ Hidden processes detected
+
+➡ Demonstrated that RAM analysis exposes attacker activity invisible on disk.
+
+📚 Lessons Learned
+Memory dumps preserve live attack evidence
+Volatility enables deep system reconstruction
+Kernel symbols are critical for Linux analysis
+Injected malware often exists only in RAM
