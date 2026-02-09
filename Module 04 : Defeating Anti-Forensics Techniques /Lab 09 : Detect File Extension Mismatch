@@ -1,1 +1,41 @@
+🎯 Objective
+Attackers frequently disguise malicious files by changing their file extensions (e.g., .exe renamed to .jpg or .pdf) to evade detection and trick users.
 
+This lab focuses on:
+✔ Identifying tampered file extensions
+✔ Comparing visible extensions with true file types
+✔ Detecting hidden malicious content in disk images
+
+🧰 Tools Used
+Autopsy Forensic Suite
+
+📌 Procedure (Key Steps)
+📂 Part 1 — Loading the Forensic Image
+Open Autopsy
+Add evidence file: XX.dd
+When the Configure Ingest Modules window appears, enable:
+✅ File Type Identification
+✅ Extension Mismatch Detector
+✅ Embedded File Extractor
+Start ingestion and allow analysis to complete
+
+🔍 Part 2 — Reviewing Extension Mismatches
+In the left pane, navigate to:
+Results → Extension Mismatch Detected
+Review flagged files in the right pane:
+Extension column → visible (modified) extension
+MIME Type column → actual file format
+➡ Differences indicate tampering or obfuscation
+
+🔍 Findings
+✔ Multiple files displayed mismatched extensions
+✔ MIME analysis revealed true underlying file types
+✔ Several files were disguised to appear harmless
+✔ Evidence of file obfuscation and evasion techniques
+
+📚 Lessons Learned
+File extensions alone cannot be trusted
+MIME type analysis reveals real file structure
+Attackers commonly disguise executables and scripts
+
+Extension mismatch detection is critical in malware investigation
