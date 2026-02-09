@@ -1,1 +1,59 @@
+🎯 Objective
+Understand how attackers and insiders:
+Hide data inside images and audio files using steganography
+Evade detection by embedding malicious or sensitive content
+Use covert channels for data exfiltration
+Learn how to:
+✔ Detect steganographic techniques
+✔ Extract hidden files from media
+✔ Analyze embedded content
 
+🧰 Tools Used
+StegSpy — Steganography detection
+OpenStego — Data extraction from images
+zsteg (Linux) — Advanced PNG analysis
+DeepSound — Audio steganography extraction
+
+📌 Procedure (Key Steps)
+🖼️ Part 1 — Detecting Steganography with StegSpy
+Launch StegSpy
+Upload image file XX.png
+Scan file
+➡ Tool identifies the steganographic method used to embed hidden data
+
+📤 Part 2 — Extracting Hidden Data from Image with OpenStego
+Launch OpenStego
+Click Extract Data under Data Hiding
+Select XX.png as carrier file
+Provide output path
+Start extraction
+➡ Hidden file is successfully recovered
+
+🧪 Part 3 — Advanced Image Analysis Using zsteg (Linux)
+Open terminal
+Gain root privileges
+sudo su
+apt update
+apt install ruby -y
+gem install zsteg
+zsteg XX.png
+➡ Embedded hidden information is revealed within PNG file
+
+🎧 Part 4 — Extracting Hidden Audio Data Using DeepSound
+Launch DeepSound
+Click Open Carrier Files
+Select XX.wav
+Click Extract Secret Files
+➡ Tool extracts hidden audio-embedded data and displays file location
+
+🔍 Findings
+✔ Steganography techniques were detected in image and audio files
+✔ Hidden files were successfully extracted from PNG and WAV formats
+✔ Embedded content can carry sensitive data or malicious payloads
+✔ Steganography can bypass traditional security controls if unchecked
+
+📚 Lessons Learned
+Media files can be covert data carriers
+Steganography is actively used in cybercrime and malware campaigns
+Detection requires specialized forensic tools
+Hidden data extraction is critical in DFIR investigations
