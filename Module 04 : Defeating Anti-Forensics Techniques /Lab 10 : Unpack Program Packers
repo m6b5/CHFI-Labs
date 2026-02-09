@@ -1,1 +1,54 @@
+🎯 Objective
+Malware authors frequently use packers to compress and obfuscate executables in order to:
+Evade antivirus detection
+Hide malicious code
+Complicate static analysis
 
+This lab focuses on:
+✔ Identifying packed executable files
+✔ Determining the packer used
+✔ Safely unpacking the executable for further analysis
+
+🧰 Tools Used
+Detect It Easy (DiE)
+ExeInfo PE
+UPX (Ultimate Packer for Executables)
+Windows PowerShell / Command Prompt
+
+📌 Procedure (Key Steps)
+🔍 Step 1 — Identify the Packer Using Detect It Easy (DiE)
+Launch Detect It Easy (DiE)
+Load the suspicious file: XX.exe
+Review detection results in the main window
+
+Observed Output:
+Packer/compiler identified
+Entropy level indicating compression/obfuscation
+➡ Confirms executable is packed
+
+🔍 Step 2 — Cross-Verification Using ExeInfo PE
+Launch ExeInfo PE
+Load XX.exe
+Analyze packer signature
+Result:
+File identified as packed with UPX
+⚠️ Packers are commonly used by malware to evade detection
+
+📦 Step 3 — Unpack the Executable Using UPX
+Open Command Prompt or PowerShell in UPX directory
+Run:
+upx.exe -d -o "E:\Path\Unpacked.exe" "E:\Path\XX.exe"
+Verify successful unpacking
+➡ Clean unpacked executable generated
+
+🔍 Findings
+✔ Executable was packed using UPX
+✔ Packing successfully detected by DiE and ExeInfo PE
+✔ File unpacked successfully for deeper analysis
+✔ Original code now accessible for static inspection
+
+📚 Lessons Learned
+Packed malware hides real malicious logic
+Packer detection is essential before static analysis
+UPX is commonly abused by attackers
+Unpacking restores readable executable structure
