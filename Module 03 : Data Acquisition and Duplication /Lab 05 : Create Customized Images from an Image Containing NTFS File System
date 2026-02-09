@@ -1,1 +1,60 @@
+🎯 Objective
+Understand how the Windows NTFS (New Technology File System) stores data at the sector level and learn how to:
+Examine raw NTFS disk structures
+Analyze sectors in hexadecimal format
+Identify partitions and file system metadata
+Extract low-level evidence for forensic processing
+NTFS supports:
+File permissions
+Encryption (EFS)
+Compression
+Hidden data streams
+➡ Making it critical in digital forensic investigations.
 
+🧰 Tools Used
+DiskExplorer for NTFS
+
+📌 Procedure (Key Steps)
+🧩 Step 1 — Load Forensic Image
+Launched DiskExplorer for NTFS
+Selected File → Open as Drive
+Loaded forensic image:
+XX.dd
+
+DiskExplorer displayed:
+Valid sectors
+Partition table structure
+
+➡ Confirmed proper NTFS disk layout.
+
+🔢 Step 2 — Sector-Level Navigation
+Opened raw sector view:
+Goto → Sector
+Entered hex offset:
+00000004
+Switched view:
+View → Hex   (or F3)
+
+➡ Displayed raw NTFS sector data in hexadecimal format.
+
+📋 Step 3 — Evidence Extraction
+Selected full hex content:
+Edit → Select All
+Exported evidence:
+Edit → Copy to File
+Saved sector data for:
+Timeline analysis
+Metadata reconstruction
+Court-ready documentation
+
+🔍 Findings
+✔ Successfully navigated raw NTFS disk sectors
+✔ Viewed partition and filesystem structures
+✔ Extracted low-level hexadecimal evidence
+✔ Demonstrated forensic disk interpretation beyond file browsing
+
+📚 Lessons Learned
+NTFS stores critical forensic metadata at sector level
+Hex analysis reveals hidden & deleted artifacts
+Forensic tools allow deep file system inspection
+Low-level disk analysis strengthens evidence reliability
