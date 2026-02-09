@@ -1,1 +1,85 @@
+🎯 Objective
+During a security incident involving an AWS EC2 instance, forensic investigators must preserve evidence without altering 
+the suspect system.
 
+The goal of this lab is to:
+Acquire an offline forensic snapshot of an EC2 instance’s EBS volume, convert it into an evidence volume, attach it 
+to a forensic workstation, and verify file integrity after a simulated insider tampering attack.
+
+🧰 Tools Used
+AWS EC2 & Elastic Block Store (EBS)
+PuTTY & PuTTYgen
+FTK Imager
+MD5 Hash Calculator
+
+📌 Scenario Overview
+
+A confidential file is uploaded to a production EC2 instance by a legitimate user.
+A malicious insider modifies the file content.
+
+A forensic investigator:
+Takes the suspect system offline
+Acquires a forensic snapshot
+Creates an evidence volume
+Mounts it on a forensic workstation
+Validates file tampering using cryptographic hashes
+
+🧪 Procedure
+🔹 Task 1 – Creating EC2 Instances
+
+Created two instances:
+Instance	Purpose
+Production Machine	Suspect system
+Forensic Workstation	Evidence analysis
+Generated RSA key pair (.pem) and converted it to .ppk using PuTTYgen.
+
+🔹 Task 2 – Uploading Confidential File
+Transferred quote.txt into production instance using:
+pscp -i AWSproductionmachinekey.ppk quote.txt ubuntu@<public_dns>:/home/ubuntu/
+
+🔹 Task 3 – Insider File Tampering
+Connected via PuTTY and modified file contents:
+sudo -i
+cd /home/ubuntu
+nano quote.txt
+
+🔹 Task 4 – Forensic Evidence Acquisition
+✅ Proper forensic handling:
+Production instance stopped
+Root EBS volume identified
+Snapshot created
+Evidence volume created from snapshot
+
+🔹 Task 5 – Mounting Evidence Volume
+Stopped forensic workstation
+Attached evidence volume (xvdf)
+Restarted forensic workstation
+Confirmed mounted device
+
+🔹 Task 6 – Evidence Examination with FTK Imager
+Steps:
+Open FTK Imager
+Add attached physical drive
+Navigate:
+PHYSICALDRIVE1 → Partition → ext4 → root → home → ubuntu
+Located quote.txt
+Exported hash values
+
+🔍 Integrity Verification
+Hash of tampered file obtained from evidence volume
+Compared with original file hash using MD5 calculator
+Hash mismatch confirmed unauthorized modification
+
+🔍 Findings
+✔ Evidence preserved without altering suspect system
+✔ File content modification confirmed
+✔ Forensic snapshot preserved point-in-time state
+✔ Cloud-native evidence acquisition achieved
+✔ Integrity breach clearly demonstrated
+
+📚 Lessons Learned
+Cloud evidence must be acquired offline to preserve integrity
+EBS snapshots act as forensic disk images in AWS
+Evidence volumes allow safe analysis without contamination
+Cryptographic hashes are essential for tampering detection
+Forensic methodology applies equally to cloud environments
