@@ -1,1 +1,43 @@
+🎯 Objective
+Learn how to restore data from missing or deleted disk partitions by:
+Identifying lost partition structures
+Scanning raw disk space for recoverable volumes
+Recovering files from reconstructed partitions
 
+🧰 Tools Used
+EaseUS Data Recovery Wizard
+
+📌 Procedure (Key Steps)
+💽 Step 1 — Launch Partition Recovery Scan
+Opened EaseUS Data Recovery Wizard.
+Displayed all internal drives connected to the system.
+Selected:
+Lost Partition-1
+
+🔍 Step 2 — Deep Scan for Deleted Partition
+Clicked:
+Search for Lost Data
+Tool performed:
+Advanced disk structure scan
+Partition table reconstruction
+File system recovery
+Recovered partition appeared in left panel.
+
+♻ Step 3 — Data Restoration
+Selected the reconstructed partition.
+Clicked:
+Recover
+Restored accessible files and directories.
+
+🔍 Findings
+✔ Successfully detected deleted partition
+✔ Reconstructed lost volume structure
+✔ Recovered stored user data
+✔ Retrieved evidentiary files previously inaccessible
+
+📚 Lessons Learned
+Deleted partitions do not equal destroyed data
+Partition tables can be reconstructed
+Full disk scans recover hidden volumes
+
+Attackers often rely on partition deletion — ineffective against forensic tools
