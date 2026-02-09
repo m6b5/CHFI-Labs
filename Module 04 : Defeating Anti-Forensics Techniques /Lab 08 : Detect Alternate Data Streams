@@ -1,1 +1,52 @@
+🎯 Objective
+Alternate Data Streams (ADS) is a feature of the NTFS file system that allows files to contain hidden data streams in addition to their main content.
+Attackers abuse ADS to:
+Hide malicious payloads
+Store sensitive data covertly
+Bypass traditional file inspection
 
+This lab focuses on:
+✔ Detecting hidden NTFS streams
+✔ Extracting concealed data
+✔ Understanding ADS as an anti-forensics technique
+
+🧰 Tools Used
+Windows PowerShell (Administrator)
+NoVirusThanks Stream Detector
+
+📌 Procedure (Key Steps)
+🖥️ Part 1 — Detecting ADS Using PowerShell
+Launch Windows PowerShell as Administrator
+Navigate to system directory:
+cd C:\Windows\System32
+Scan recursively for hidden streams:
+gci -recurse | % { gi $_.FullName -stream * } | where stream -ne ':$Data'
+➡ Lists files containing Alternate Data Streams
+
+In real-world attacks, ADS are attached to normal-looking files to evade suspicion.
+
+📤 Part 2 — Extracting Hidden ADS Content
+To view data stored inside a hidden stream:
+get-content -path C:\Windows\System32\file.txt -stream secret_file1.txt
+➡ Displays the concealed data from the ADS stream
+
+🔍 Part 3 — Detecting ADS Using Stream Detector Tool
+Launch NoVirusThanks Stream Detector
+Select directory to scan (example: C:\Windows\System32)
+Start scan
+➡ Tool lists:
+Stream name
+Host file
+Stream size
+
+🔍 Findings
+✔ Hidden Alternate Data Streams were detected using PowerShell and GUI tool
+✔ Concealed data was successfully extracted
+✔ ADS can store information invisibly from normal file explorers
+✔ Legitimate files can be weaponized as covert containers
+
+📚 Lessons Learned
+NTFS ADS is a powerful anti-forensics technique
+Hidden data does not alter visible file size or behavior
+PowerShell can uncover stealth persistence mechanisms
+ADS should always be checked during forensic investigations
