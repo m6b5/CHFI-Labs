@@ -1,1 +1,63 @@
+🎯 Objective
 
+Volatile memory often contains critical forensic artifacts such as:
+Injected malware payloads
+Decrypted files
+Network artifacts
+Credentials and runtime data
+
+This lab demonstrates how to:
+✔ Extract residual data from a Linux memory dump
+✔ Recover files stored temporarily in RAM
+✔ Analyze volatile evidence without executing malware
+
+🧰 Tools Used
+
+PhotoRec (TestDisk Suite)
+
+Ubuntu Linux
+
+📌 Procedure (Key Steps)
+🔑 Step 1 — Privilege Escalation
+sudo su
+Ensures full access to forensic image files.
+
+🧰 Step 2 — Install Recovery Tool
+apt install testdisk
+(PhotoRec is bundled within TestDisk)
+
+📥 Step 3 — Load Memory Dump
+photorec Linux.mem
+Initiates forensic carving on the RAM image.
+
+📂 Step 4 — Partition Handling
+Selected Proceed
+Partition detected as Unknown (expected for memory dumps)
+Chose Search
+
+📁 Step 5 — File System Type
+Selected:
+Other (memory dumps have no structured filesystem)
+
+💾 Step 6 — Evidence Output Directory
+Navigated to target folder
+Pressed C to confirm recovery path
+Recovered artifacts stored in automatically generated directories.
+
+🔍 Findings
+✔ Successfully carved files from volatile memory
+✔ Recovered temporary artifacts stored only in RAM
+✔ Demonstrated that memory contains forensic evidence beyond disk data
+
+Common recoverable items may include:
+Images
+Executables
+Config files
+Temporary documents
+Malware fragments
+
+📚 Lessons Learned
+RAM contains valuable forensic evidence
+Fileless attacks still leave recoverable artifacts
+Memory carving complements disk forensics
+Volatile evidence can reveal runtime malware behavior
