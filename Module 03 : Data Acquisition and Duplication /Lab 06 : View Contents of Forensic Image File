@@ -1,1 +1,63 @@
+🎯 Objective
+Learn how to assess forensic disk images to:
+Identify deleted files with evidentiary value
+Perform rapid forensic triage
+Examine raw file data using hex view
+Extract file metadata for investigation
+FTK Imager eliminates the need to manually recover every deleted file by providing structured forensic analysis directly on disk images.
 
+🧰 Tools Used
+AccessData FTK Imager
+
+📌 Procedure (Key Steps)
+📥 Step 1 — Load Forensic Evidence
+Opened FTK Imager
+Selected:
+File → Add Evidence Item
+Chose:
+Image File
+Loaded forensic image:
+XX.dd
+The image appeared in the Evidence Tree showing full directory structure.
+
+📁 Step 2 — Explore File System & Deleted Data
+Expanded folders to examine:
+Active files
+Deleted artifacts
+Hidden entries
+FTK automatically identifies recoverable deleted content.
+
+🔍 Step 3 — Hex-Level File Examination
+Selected a file (e.g., YY.jpg)
+Clicked:
+🧩 Hex View Icon
+Displayed:
+Raw file contents in hexadecimal
+Byte-level evidence view
+➡ Enables verification of overwritten or partially deleted data.
+
+📊 Step 4 — Metadata & Data Interpretation
+Reviewed:
+📄 Properties Tab
+File size
+Creation/modification timestamps
+Start cluster location
+File classification
+🔢 Hex Value Interpreter Tab
+DOS timestamps
+Signed integers
+Raw data decoding
+➡ Converts hex into readable forensic values.
+
+🔍 Findings
+✔ Successfully loaded forensic image
+✔ Identified deleted and active files
+✔ Viewed raw hex contents of artifacts
+✔ Extracted detailed file metadata
+✔ Verified evidentiary integrity
+
+📚 Lessons Learned
+Forensic images can be analyzed without altering evidence
+Hex inspection reveals hidden or damaged data
+Metadata provides timeline reconstruction
+FTK Imager enables fast forensic triage
