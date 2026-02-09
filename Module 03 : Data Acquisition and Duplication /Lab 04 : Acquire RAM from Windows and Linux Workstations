@@ -1,1 +1,81 @@
+🎯 Objective
+Understand the importance of volatile memory in digital forensics and learn how to:
+Acquire RAM from live systems without shutting them down
+Perform memory acquisition on both Windows and Linux workstations
+Use local and remote memory acquisition techniques
+RAM contains critical artifacts such as:
+Running processes
+Network connections
+Encryption keys
+Malware in execution
 
+🧰 Tools Used
+Windows:
+Belkasoft RAM Capturer
+
+Linux:
+fmem kernel module
+LiME (Linux Memory Extractor)
+dd
+Netcat
+
+📌 Procedure (Key Steps)
+🪟 Windows RAM Acquisition (Belkasoft RAM Capturer)
+Step 1 — Launch Tool
+Executed RamCapture64.exe as administrator
+
+Step 2 — Storage Preparation
+Selected forensic disk (F:)
+Created folder: Windows RAM
+
+Step 3 — Capture Memory
+Started RAM acquisition
+Dump saved as:
+YYYYMMDD.mem
+➡ Live memory successfully captured without powering off the system.
+
+🐧 Linux RAM Acquisition — fmem (Local)
+Step 1 — Prepare Environment
+Installed required build tools:
+apt install -y build-essential
+apt install -y dwarves
+Copied kernel file:
+cp /sys/kernel/btf/vmlinux /usr/lib/modules/6.2.0-35-generic/build/
+
+Compiled and installed fmem:
+make
+bash run.sh
+
+Step 2 — Local RAM Dump with dd
+dd if=/dev/fmem of=/home/james/ubuntu_local_ram.dd bs=1MB
+➡ Full memory dump stored locally.
+
+🔥 Linux RAM Acquisition — LiME (Local)
+Step 1 — Build LiME
+cd /home/james/LiME/src/
+make
+
+Step 2 — Load Kernel Module & Dump Memory
+insmod lime-6.2.0-35-generic.ko "path=../../ubuntu_local_ram.mem format=lime"
+➡ Memory captured in LiME forensic format.
+
+🌐 Linux RAM Acquisition — Remote (dd + Netcat)
+📡 On Forensic Machine (Listener)
+nc -l 1234 > ubuntu_remote_ram.dd
+
+🖥 On Suspect Machine (Sender)
+dd if=/dev/fmem bs=1024 | nc 10.10.1.9 1234
+➡ RAM transmitted securely and stored remotely.
+
+🔍 Findings
+✔ Successfully captured live RAM from Windows and Linux systems
+✔ Performed both local and remote memory acquisition
+✔ Preserved volatile forensic artifacts
+✔ Demonstrated enterprise DFIR acquisition techniques
+
+📚 Lessons Learned
+RAM contains crucial volatile evidence missed by disk analysis
+Live acquisition prevents data loss
+Linux kernel modules enable deep memory extraction
+Remote acquisition is valuable when storage access is limited
+Memory forensics is essential in malware investigations
