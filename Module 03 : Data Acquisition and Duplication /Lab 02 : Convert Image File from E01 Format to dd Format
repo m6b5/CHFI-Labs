@@ -1,1 +1,48 @@
+🎯 Objective
+Understand and perform forensic image format conversion by:
+Converting E01 (EnCase Evidence File) into RAW/DD format
+Preserving bit-level integrity of acquired evidence
+Enabling compatibility with multiple forensic tools
+This lab demonstrates proper handling of forensic image formats commonly encountered in investigations.
 
+🧰 Tools Used
+xmount (forensic image mounting and conversion utility)
+Linux terminal (Ubuntu)
+
+📌 Procedure (Key Steps)
+📥 Step 1 — Install xmount
+Updated repositories and installed the tool:
+sudo apt-get install -y xmount
+
+📂 Step 2 — Prepare Mount Directory
+Created an empty directory for the converted image:
+mkdir /home/jason/Documents/e01_mount
+⚠️ The mount directory must be empty before use.
+
+🔄 Step 3 — Convert E01 to DD Format
+Executed conversion command:
+xmount --in ewf XX.E01 /home/jason/Documents/e01_mount
+
+
+Explanation:
+--in ewf → specifies EnCase (E01) input format
+XX.E01 → source forensic image
+Mount directory → output location
+➡ The E01 image is mounted and exposed as a RAW/DD disk image.
+
+📦 Step 4 — Access Converted Image
+Navigated to mount directory:
+cd /home/jason/Documents/e01_mount
+ls
+➡ RAW disk image available for analysis by forensic tools.
+
+🔍 Findings
+✔ Successfully converted E01 forensic image to DD format
+✔ Maintained bit-for-bit integrity
+✔ Enabled compatibility with tools requiring raw disk images
+
+📚 Lessons Learned
+E01 is a compressed forensic format with metadata support
+DD/RAW is a universal format supported by most forensic tools
+xmount allows safe, read-only forensic image handling
+Format conversion improves tool interoperability in investigation
