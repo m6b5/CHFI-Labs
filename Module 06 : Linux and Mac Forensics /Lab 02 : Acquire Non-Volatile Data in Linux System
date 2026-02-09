@@ -1,1 +1,116 @@
+🎯 Objective
+Non-volatile artifacts preserve historical system activity and are essential for reconstructing attack timelines after an incident.
 
+This lab focuses on collecting persistent Linux forensic artifacts to:
+
+✔ Identify user accounts and access patterns
+✔ Analyze authentication and privilege usage
+✔ Detect hidden files and rootkits
+✔ Extract file metadata for timeline correlation
+✔ Enumerate directories for suspicious artifacts
+
+🧰 Tools Used
+Ubuntu Linux
+
+Built-in forensic sources:
+
+/etc/passwd, /var/log/wtmp, /var/log/auth.log
+
+uname, system logs
+
+rkhunter (rootkit detection)
+
+Python forensic scripts:
+
+Metadata extraction
+
+EXIF analysis
+
+Directory enumeration
+
+📌 Procedure (Key Steps)
+🧠 Step 1 — System Identification
+sudo su
+uname -r
+
+Collected:
+Kernel version
+System fingerprinting data (important for exploit correlation)
+
+👥 Step 2 — User Accounts Enumeration
+cat /etc/passwd
+cut -d: -f1 /etc/passwd
+Analyzed:
+Existing system users
+Potential rogue or backdoor accounts
+
+🕒 Step 3 — Login & Session History
+last -f /var/log/wtmp
+
+Recovered:
+Historical login records
+Access timestamps
+Remote connection evidence
+
+🔐 Step 4 — Authentication & Privilege Logs
+cat /var/log/auth.log
+
+Reviewed:
+SSH logins
+Failed authentication attempts
+sudo command usage
+Privilege escalation indicators
+
+🧬 Step 5 — Rootkit & Hidden Artifact Detection
+apt install rkhunter
+rkhunter --check --rwo
+
+Scanned for:
+Hidden directories
+Suspicious binaries
+Known rootkit signatures
+
+📂 Step 6 — File Metadata Extraction (Python)
+gedit metadata.py
+
+Extracted:
+File size
+Creation time
+Modification time
+Last access time
+
+Converted:
+Epoch timestamps to human-readable dates for timeline building
+
+🖼 Step 7 — Advanced EXIF Metadata Analysis
+gedit exif_metadata.py
+
+Recovered:
+Embedded image metadata
+Device info
+Timestamps
+Potential location traces
+
+📁 Step 8 — Directory Enumeration for Hidden Artifacts
+gedit enumeration.py
+
+Enumerated:
+Files and subdirectories
+Suspicious hidden objects
+Unusual persistence artifacts
+
+🔍 Findings
+✔ Kernel and system baseline identified
+✔ User accounts mapped
+✔ Historical login activity reconstructed
+✔ Privilege usage analyzed
+✔ Hidden artifacts scanned
+✔ File timestamps extracted for timeline analysis
+✔ Metadata exposed potential evidence trails
+
+📚 Lessons Learned
+Persistent logs are crucial for attack reconstruction
+User activity reveals intrusion points
+Metadata timestamps form forensic timelines
+Rootkit scanning detects stealth persistence
+Python automation accelerates forensic collection
