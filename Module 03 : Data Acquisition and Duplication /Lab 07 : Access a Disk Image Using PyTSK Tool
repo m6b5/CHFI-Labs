@@ -1,1 +1,54 @@
+🎯 Objective
+Learn how to programmatically analyze forensic disk images to:
+Parse file systems within disk images
+Enumerate directories and files
+Access evidence without mounting the image
+Automate forensic investigations using Python
+This method is widely used in large-scale forensic analysis and incident response automation.
 
+🧰 Tools Used
+PyTSK (Python bindings for The Sleuth Kit)
+Python 3
+
+📌 Procedure (Key Steps)
+📁 Step 1 — Prepare Evidence Image
+Copied forensic image:
+XX.img
+into the Home directory for analysis.
+
+🛠 Step 2 — Install PyTSK Library
+Acquired root privileges:
+sudo su
+Installed PyTSK:
+pip install pytsk3
+
+🧾 Step 3 — Create Analysis Script
+Created Python script:
+gedit disk_analysis.py
+
+Script logic:
+Opens disk image
+Loads file system
+Iterates directories
+Prints file and folder names
+
+▶ Step 4 — Execute Forensic Analysis
+Ran script:
+python3 disk_analysis.py
+
+Automatically displayed:
+File structure
+Directories
+Associated artifacts within disk image
+
+🔍 Findings
+✔ Successfully parsed disk image using Python
+✔ Enumerated all directories and files
+✔ Accessed forensic evidence without mounting
+✔ Demonstrated automated forensic workflow
+
+📚 Lessons Learned
+Disk images can be analyzed programmatically
+Automation speeds large forensic cases
+PyTSK enables scalable evidence parsing
+Python is powerful for DFIR tooling
