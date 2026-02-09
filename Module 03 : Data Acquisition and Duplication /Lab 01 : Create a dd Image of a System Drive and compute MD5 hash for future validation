@@ -1,1 +1,54 @@
+🎯 Objective
+Perform a forensic-sound physical acquisition of a Windows system drive by:
+Creating a raw disk image using the dd tool
+Storing evidence on an external medium
+Verifying integrity using cryptographic hashing
+This lab demonstrates proper evidence acquisition procedures used in digital forensics investigations.
 
+🧰 Tools Used
+dd for Windows (disk imaging utility)
+Windows PowerShell (Administrator mode)
+External storage device (USB drive for evidence storage)
+
+📌 Procedure (Key Steps)
+🔍 Step 1 — Identify Physical Disk
+Opened PowerShell as Administrator and listed available disks:
+wmic diskdrive list brief /format:list
+➡ Identified target disk (e.g., PHYSICALDRIVE0) for acquisition.
+
+📂 Step 2 — Prepare Evidence Storage
+Navigated to dd executable directory:
+cd C:\Users\Admin\Desktop\dd
+
+Mounted external USB storage:
+net use Z: "\\USB"
+
+Created evidence directory:
+Z:\Evidence
+
+💽 Step 3 — Acquire Disk Image
+Executed physical acquisition command:
+.\dd.exe if=\\.\PHYSICALDRIVE0 of=Z:\Evidence\Windows_Evidence_001.dd bs=512k --size --progress
+
+Parameters explained:
+if → input physical drive
+of → output forensic image
+bs=512k → block size for efficiency
+--progress → acquisition monitoring
+➡ Generated a raw forensic disk image for investigation.
+
+🔐 Step 4 — Verify Evidence Integrity (Hashing)
+Computed MD5 hash of the acquired image:
+Get-FileHash Z:\Evidence\Windows_Evidence_001.dd -Algorithm MD5 | Format-List
+➡ Ensures evidence integrity and chain-of-custody validation.
+
+🔍 Findings
+✔ Successfully acquired full physical disk image
+✔ Evidence securely stored on external medium
+✔ Cryptographic hash generated for integrity verification
+
+📚 Lessons Learned
+Physical disk acquisition preserves all data including deleted files and slack space
+External storage prevents contamination of the suspect system
+Hash verification is critical for forensic admissibility
+DD provides raw, tool-agnostic forensic images usable across platforms
