@@ -1,1 +1,57 @@
+🎯 Objective
+Understand how to recover data from a partition that has been:
+Deleted
+Merged into another active partition
+Hidden within extended disk space
+And how forensic tools can reconstruct the original partition structure.
 
+🧰 Tools Used
+Windows Disk Management
+R-Studio Data Recovery
+
+📌 Procedure (Key Steps)
+💽 Step 1 — Simulate Partition Merging (Anti-Forensics Technique)
+Opened:
+Disk Management → Create and format hard disk partitions
+Right-clicked Forensic Disk partition → Selected:
+Extend Volume
+Followed Extend Volume Wizard → merged deleted partition space into active partition.
+Result:
+Original deleted partition space became part of a larger partition.
+
+🔍 Step 2 — Scan for Hidden/Lost Partition
+Launched R-Studio.
+Selected the existing merged partition (F: drive).
+Started scan using:
+Detailed scan (slower but finds lost objects)
+
+📂 Step 3 — Identify Reconstructed Partition
+After scan completion:
+Tool displayed Recognized Partition(s)
+Found:
+Recognized1 — 20 GB (Unknown space)
+This corresponded to:
+The deleted partition that had been merged into the 10 GB active partition
+Combined volume appeared as 30 GB
+
+♻ Step 4 — Recover Files
+Double-clicked Recognized1.
+Browsed recovered folders and files.
+When prompted:
+✔ Applied recovery settings to all files
+✔ Continued recovery process
+
+Recovered data stored at:
+C:\Recovered Partition\Root
+
+🔍 Findings
+✔ Hidden merged partition successfully detected
+✔ Original deleted volume reconstructed
+✔ Files fully recovered
+✔ Disk merging does NOT securely erase data
+
+📚 Lessons Learned
+Merging partitions does not destroy original data
+Forensic tools can detect unknown space structures
+Partition reconstruction is possible even after volume extension
+Common anti-forensics techniques are ineffective against deep scans
