@@ -1,1 +1,38 @@
+🎯 Objective
+Learn how to recover deleted files from a Linux-based SSD forensic image by:
+Performing file carving on unallocated space
+Analyzing carved artifacts from Linux file systems
+Understanding SSD behavior in forensic recovery scenarios
 
+🧰 Tools Used
+Autopsy Digital Forensics Platform
+
+📌 Procedure (Key Steps)
+📂 Step 1 — Load Linux SSD Forensic Image
+Opened forensic image:
+Linux_SSD.dd
+Observed structured directories representing:
+System files
+Process data
+Service artifacts
+Application traces
+
+🔍 Step 2 — Perform File Carving
+Allowed Autopsy ingest modules to process the image.
+Navigated to:
+CarvedFiles
+in the results pane.
+Reviewed recovered files and associated metadata.
+
+🔍 Findings
+✔ Successfully carved deleted files from Linux SSD image
+✔ Retrieved file fragments from unallocated space
+✔ Verified recovery of Linux filesystem artifacts
+✔ Demonstrated SSD carving capability when TRIM is not enforced
+
+📚 Lessons Learned
+File carving works on Linux file systems similar to Windows
+SSD recovery depends on TRIM configuration
+Autopsy supports multi-OS forensic analysis
+
+Linux forensic artifacts are valuable evidence sources
