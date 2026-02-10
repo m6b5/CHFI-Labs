@@ -1,1 +1,17 @@
+## 🎯 Objective 
+know how to take a snapshot of the OS disk from the affected VM and mount it on a forensic workstation for further examination.
+how to take a snapshot of the OS disk of a compromised VM in Azure, copy it to an Azure storage account, and mount it to an on-premise forensic workstation for further examination.
+
+
+## 🧰 Tools Used 
+ Autopsy tool.
+
+## 📌 Procedure (Key Steps)
+Here, for demonstration purposes, we are performing a file transfer attack as an attacker. Later we will create a OS disk snapshot of the affected VM in Azure, copy the snapshot to an Azure file share stored under a different resource group, mount the file share containing the snapshot directly onto the forensic workstation, and then export the injected malicious file using Autopsy. We will then upload it to VirusTotal website for analysis.
+
+
+## 🔍 Findings
+
+## 📚 Lessons Learned
+
 
