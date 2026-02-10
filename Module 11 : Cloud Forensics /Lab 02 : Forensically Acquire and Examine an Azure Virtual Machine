@@ -1,17 +1,110 @@
-## 🎯 Objective 
-know how to take a snapshot of the OS disk from the affected VM and mount it on a forensic workstation for further examination.
-how to take a snapshot of the OS disk of a compromised VM in Azure, copy it to an Azure storage account, and mount it to an on-premise forensic workstation for further examination.
+🎯 Objective
+When a virtual machine in Microsoft Azure is compromised, forensic investigators must preserve its disk data in a forensically sound manner.
 
+The objectives of this lab are to:
+Create a snapshot of an affected Azure VM’s OS disk, securely copy it to an Azure storage account, mount it on a forensic workstation, and analyze the disk image
+using Autopsy to recover malicious artifacts.
 
-## 🧰 Tools Used 
- Autopsy tool.
+🧰 Tools Used
+Microsoft Azure Portal & Azure CLI
+Azure File Share (Storage Account)
+Windows Server 2022 Forensic Workstation
+Autopsy (Digital Forensics Platform)
+VirusTotal (Malware analysis)
 
-## 📌 Procedure (Key Steps)
-Here, for demonstration purposes, we are performing a file transfer attack as an attacker. Later we will create a OS disk snapshot of the affected VM in Azure, copy the snapshot to an Azure file share stored under a different resource group, mount the file share containing the snapshot directly onto the forensic workstation, and then export the injected malicious file using Autopsy. We will then upload it to VirusTotal website for analysis.
+📌 Scenario Overview
+An attacker injects a malicious file into a production Azure VM.
+A forensic investigator:
+Creates a forensic snapshot of the OS disk
+Copies it to a secure storage account
+Mounts the snapshot on a forensic workstation
+Extracts malicious artifacts
+Confirms malicious behavior using threat intelligence
 
+🧪 Procedure
+🔹 Task 1 – Environment Setup
+Created two Azure resource groups:
+Resource Group	Purpose
+Production	Compromised VM
+chfi-investigation	Forensic storage & analysis
 
-## 🔍 Findings
+Created Linux VM azure-ubuntu in Production group.
 
-## 📚 Lessons Learned
+🔹 Task 2 – File Injection Attack Simulation
+Attacker transferred malicious file:
+scp Infected.docx James@<Public_IP>:/home/James
 
+Simulates real-world insider or external compromise.
 
+🔹 Task 3 – OS Disk Snapshot Creation
+Using Azure CLI:
+az vm show --resource-group Production --name azure-ubuntu --query "storageProfile.osDisk.name"
+az snapshot create \
+  --resource-group Production \
+  --name evidencesnapshot \
+  --location eastus \
+  --source <OS_Disk_Name>
+
+🔹 Task 4 – Secure Snapshot Access (SAS URI)
+Generated temporary read-only access:
+az snapshot grant-access \
+  --resource-group Production \
+  --name evidencesnapshot \
+  --duration-in-seconds 3600 \
+  --access-level read
+
+🔹 Task 5 – Storage Account & File Share Creation
+az storage account create \
+  --resource-group chfi-investigation \
+  --name chfifilestorage \
+  --location eastus \
+  --kind storageV2 \
+  --sku Standard_LRS
+
+az storage share create \
+  --account-name chfifilestorage \
+  --name chfifileshare
+
+🔹 Task 6 – Snapshot Copy to Forensic Storage
+az storage file copy start \
+  --source-uri "<SAS_URI>" \
+  --destination-share chfifileshare \
+  --destination-path azureevidencefile.dd
+
+Verified copy status until success.
+
+Deleted snapshot from Production environment after expiration for security.
+
+🔹 Task 7 – Mounting Evidence to Forensic Workstation
+Mounted Azure File Share as network drive on Windows Server 2022 via PowerShell.
+
+🔹 Task 8 – Forensic Analysis with Autopsy
+Steps:
+Loaded azureevidencefile.dd into Autopsy
+Identified Linux root filesystem volume
+
+Navigated:
+/home/James/
+
+Recovered malicious file:
+Infected.docx
+
+🔍 Malware Verification
+Exported Infected.docx from evidence image
+Uploaded to VirusTotal
+Confirmed malicious indicators
+
+🔍 Findings
+✔ Successful forensic acquisition of Azure VM OS disk
+✔ Malicious file recovered from disk image
+✔ Cloud-native evidence preservation achieved
+✔ Secure evidence transfer via SAS & storage account
+✔ Threat confirmed via external intelligence
+
+📚 Lessons Learned
+Azure disk snapshots act as forensic disk images
+SAS URIs allow controlled evidence access
+Evidence should be isolated from production resources
+Cloud storage simplifies forensic transport
+Autopsy can analyze cloud-acquired images effectively
+Threat intelligence enhances investigation accuracy
